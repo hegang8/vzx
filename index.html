@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div div {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#btn {
+				position: absolute;
+				left: 1000px;
+				top: 400px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="btn">点击生成</button>
+		<div id="div"></div>
+		<script>
+			var div = document.getElementById('div');
+			var btn = document.getElementById('btn');
+			var str = "";
+			var L = 100;
+			var T = 100;
+			var flag = 0;
+			btn.onclick = function() {
+				str = ""
+				for(var i = 0; i < 7; i++){
+					if(flag % 4 == 0) {
+						L = i * 100;
+						if(i < 4) {
+							T = (3 - i) * 100;
+						} else {
+							T = (i - 3) * 100;
+						};
+						str += '<div style="left:' + L + 'px;top:' + T + 'px">' + i + '</div>';
+					}else if (flag % 4 == 1){
+						T = i * 100;
+						if(i < 4) {
+							L = i * 100;
+						} else {
+							L = (6 - i) * 100;
+						};
+						str += '<div style="left:' + L + 'px;top:' + T + 'px">' + i + '</div>';
+					}else if(flag % 4 == 2){
+						L = i * 100;
+						if(i < 4) {
+							T = i * 100;
+						} else {
+							T = (6 - i) * 100;
+						};
+						str += '<div style="left:' + L + 'px;top:' + T + 'px">' + i + '</div>';
+					}else{
+						T = i * 100;
+						if(i < 4) {
+							L = (3 - i) * 100;
+						} else {
+							L = (i - 3) * 100;
+						};
+						str += '<div style="left:' + L + 'px;top:' + T + 'px">' + i + '</div>';
+					}
+				};
+				flag++;
+				div.innerHTML = str;
+			}
+			
+		</script>
+	</body>
+
+</html>
